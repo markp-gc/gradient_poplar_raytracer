@@ -26,3 +26,9 @@ export PIP_DISABLE_PIP_VERSION_CHECK=1 CACHE_DIR=/tmp
 jupyter lab --allow-root --ip=0.0.0.0 --no-browser --ServerApp.trust_xheaders=True \
             --ServerApp.disable_check_xsrf=False --ServerApp.allow_remote_access=True \
             --ServerApp.allow_origin='*' --ServerApp.allow_credentials=True
+
+# Clone the repo during setup:
+cd /notebooks
+if [ ! -d "ipu_ray_lib" ]; then
+  git clone --recursive https://github.com/markp-gc/ipu_ray_lib
+fi
