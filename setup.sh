@@ -28,6 +28,14 @@ if [ ! -d "ipu_ray_lib" ]; then
   git clone --recursive https://github.com/markp-gc/ipu_ray_lib
 fi
 
+if [ ! -d "tutorials" ]; then
+  git clone --recursive https://github.com/graphcore/tutorials.git
+fi
+
+if [ ! -d "poplar_explorer" ]; then
+  git clone --recursive https://github.com/markp-gc/poplar_explorer
+fi
+
 export PIP_DISABLE_PIP_VERSION_CHECK=1 CACHE_DIR=/tmp
 jupyter lab --allow-root --ip=0.0.0.0 --no-browser --ServerApp.trust_xheaders=True \
             --ServerApp.disable_check_xsrf=False --ServerApp.allow_remote_access=True \
