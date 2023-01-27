@@ -22,19 +22,8 @@ export PUBLIC_DATASET_DIR="/datasets"
 
 export TF_POPLAR_FLAGS='--executable_cache_path='${POPLAR_EXECUTABLE_CACHE_DIR}''
 
-# Clone the repo during setup:
-cd /notebooks
-if [ ! -d "ipu_ray_lib" ]; then
-  git clone --recursive https://github.com/markp-gc/ipu_ray_lib
-fi
-
-if [ ! -d "tutorials" ]; then
-  git clone --recursive https://github.com/graphcore/tutorials.git
-fi
-
-if [ ! -d "poplar_explorer" ]; then
-  git clone --recursive https://github.com/markp-gc/poplar_explorer
-fi
+# Clone the repos during setup so things are ready to go for users:
+nohup /notebooks/.gradient/clone_repos.sh & tail -f nohup.out &
 
 export PIP_DISABLE_PIP_VERSION_CHECK=1 CACHE_DIR=/tmp
 jupyter lab --allow-root --ip=0.0.0.0 --no-browser --ServerApp.trust_xheaders=True \
